@@ -1,0 +1,52 @@
+﻿@model List<mallCenter_cs.Models.Productos>
+
+
+@{
+    ViewBag.Title = "Listado";
+}
+
+<h2>Listado</h2>
+<p>Gestionar nuestros productos</p>
+
+<table class="table table-hover">
+
+    <tr>
+        <td>N°</td>
+        <td>Nombre</td>
+        <td>Apellido</td>
+        <td>Categoria</td>
+        <td>Oferta</td>
+        
+    </tr>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            var fila = string.Empty;
+
+            if (item.oferta.Equals("En oferta"))
+            {
+                fila = "danger";
+            }
+
+            if (item.precio<=20000)
+            {
+                fila = "success";
+            }
+
+
+        <tr class="@fila">
+            <td>@item.id</td>
+            <td>@item.nombre</td>
+            <td>@item.categoria</td>
+            <td>@item.precio</td>
+            <td>@item.oferta</td>
+        </tr>  
+        }
+
+    </tbody>
+
+
+
+    </table>
